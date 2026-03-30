@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<title>Games Mana Not nya - Level 1 No Audio</title>
+<title>Games Mana Not nya - Level 1</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -616,7 +616,7 @@
 <canvas id="confettiCanvas"></canvas>
 
 <div class="app">
-  <div class="game-title">Games Mana Not nya - No Audio</div>
+  <div class="game-title">Games Mana Not nya</div>
   <div class="subtitle">Level 1 - C Major - middle Do</div>
 
   <!-- ====== OPENING SCREEN ====== -->
@@ -824,6 +824,7 @@ let stableCount = 0;
 let clueCooldownUntil = 0;
 let activeAudio = null;
 let hasTriedOpeningAudio = false;
+let countdownAudioContext = null;
 const requiredStableFrames = 3;
 const minInputRms = 0.01;
 const clueCooldownMs = 500;
@@ -923,6 +924,30 @@ function playUiClick() {
     osc.onended = () => ctx.close();
   } catch (e) {
     // Ignore UI click sound failures.
+  }
+}
+
+function playCountdownTick(secondsLeft) {
+  if (secondsLeft > 10 || secondsLeft <= 0) return;
+  try {
+    if (!countdownAudioContext || countdownAudioContext.state === 'closed') {
+      countdownAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    const ctx = countdownAudioContext;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const isUrgent = secondsLeft <= 5;
+    osc.type = isUrgent ? 'square' : 'triangle';
+    osc.frequency.setValueAtTime(isUrgent ? 980 : 740, ctx.currentTime);
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(isUrgent ? 0.05 : 0.035, ctx.currentTime + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + (isUrgent ? 0.18 : 0.12));
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + (isUrgent ? 0.18 : 0.12));
+  } catch (e) {
+    // Ignore countdown sound failures.
   }
 }
 
@@ -1089,6 +1114,7 @@ function startTimer() {
   timerInterval = setInterval(() => {
     gameDuration--;
     updateTimer();
+    playCountdownTick(gameDuration);
     if (gameDuration <= 0) endGame();
   }, 1000);
 }
@@ -1178,7 +1204,7 @@ function snapToNearestC4Only(freq) {
 function handleWrongPosition() {
   if (!canAnswer) return;
   canAnswer = false;
-  showMsg('Pilih tuts dari middle Do sampai Sol ya!', '#FF9F43');
+  showMsg('Posisi jari di Middle DO - SOL ya!', '#FF9F43');
   setTimeout(() => { canAnswer = true; }, 500);
 }
 
@@ -1222,6 +1248,7 @@ function endGame() {
 
   if (streamRef) streamRef.getTracks().forEach(t => t.stop());
   if (audioContext && audioContext.state !== 'closed') audioContext.close();
+  if (countdownAudioContext && countdownAudioContext.state !== 'closed') countdownAudioContext.close();
   setMicStatus(false);
 
   setTargetLabel('');
@@ -1234,7 +1261,8 @@ function endGame() {
 function restartGame() { stopActiveAudio(); startGame(); }
 
 function finishGame() {
-  showMsg(`Score kamu: ${score}. Bagus sekali!`, '#FFD700');
+  const finishText = score === 0 ? 'Kamu bisa lebih baik lagi!' : `Score kamu: ${score}. Bagus sekali!`;
+  showMsg(finishText, '#FFD700');
   document.getElementById('endButtons').style.display = 'none';
   document.getElementById('targetNote').innerText = 'Musik';
   setTimeout(() => {
