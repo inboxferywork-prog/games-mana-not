@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<title>ðŸŽ¹ Games Mana Not nya - Level 1</title>
+<title>Games Mana Not nya - Level 1</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -381,7 +381,7 @@
   /* Group 3: F#4, G#4, A#4 â€” fluorescent bright purple shadow */
   .black-key.grp3 {
     background: linear-gradient(180deg, #1a1a1a 0%, #111 60%, #0a0a0a 100%);
-    box-shadow: 0 6px 0 #cc00ff, 0 8px 24px rgba(180,0,255,0.7), inset 0 1px 0 rgba(255,255,255,0.12);
+    box-shadow: 0 6px 0 #29b6f6, 0 8px 24px rgba(65, 220, 255, 0.78), inset 0 1px 0 rgba(255,255,255,0.12);
   }
 
   .black-key:active { box-shadow: 0 2px 0 currentColor !important; }
@@ -615,23 +615,23 @@
 <canvas id="confettiCanvas"></canvas>
 
 <div class="app">
-  <div class="game-title">ðŸŽ¹ Games Mana Not nya</div>
-  <div class="subtitle">Level 1 Â· C4â€“G4</div>
+  <div class="game-title">Games Mana Not nya</div>
+  <div class="subtitle">Level 1 - C4-G4</div>
 
   <!-- ====== OPENING SCREEN ====== -->
   <div id="openingScreen">
-    <div class="piano-mascot">ðŸŽ¹</div>
-    <button class="start-btn" onclick="showInstructions()">ðŸŽ® Sudah siap main Quiz?</button>
+    <div class="piano-mascot">Piano</div>
+    <button class="start-btn" onclick="showInstructions()">Sudah siap main Quiz?</button>
   </div>
 
   <!-- ====== INSTRUCTION SCREEN ====== -->
   <div id="instructionScreen">
-    <div class="instr-title">ðŸ“‹ Cara Mainnya</div>
+    <div class="instr-title">Cara Main</div>
 
     <div class="instr-cards">
 
       <div class="instr-card">
-        <div class="instr-icon">ðŸŽ¹</div>
+        <div class="instr-icon">1</div>
         <div class="instr-text">
           <strong>Siapkan Piano kamu!</strong>
           Taruh HP di dekat piano. Nanti mainkan tuts piano sesuai not yang muncul di layar.
@@ -639,7 +639,7 @@
       </div>
 
       <div class="instr-card">
-        <div class="instr-icon">ðŸŽ§</div>
+        <div class="instr-icon">2</div>
         <div class="instr-text">
           <strong>HP perlu dengarkan piano kamu</strong>
           Setelah klik Mulai, HP akan minta izin pakai mikrofon supaya bisa dengar suara pianomu!
@@ -648,40 +648,40 @@
 
       <div class="instr-card" style="flex-direction: column; align-items: stretch; gap: 10px;">
         <div style="display:flex; align-items:center; gap:14px;">
-          <div class="instr-icon">ðŸ‘†</div>
+          <div class="instr-icon">3</div>
           <div class="instr-text">
             <strong>Ketuk tombol IZINKAN!</strong>
             Nanti muncul kotak seperti ini di layar HP kamu:
           </div>
         </div>
         <div class="popup-demo">
-          <div class="popup-demo-title">ðŸ”” POP-UP YANG AKAN MUNCUL</div>
+          <div class="popup-demo-title">POP-UP YANG AKAN MUNCUL</div>
           <div class="popup-demo-msg">"Games ini ingin menggunakan mikrofon"</div>
           <div class="popup-demo-buttons">
-            <button class="popup-btn-allow">âœ… Izinkan</button>
-            <button class="popup-btn-deny">âŒ Jangan</button>
+            <button class="popup-btn-allow">Izinkan</button>
+            <button class="popup-btn-deny">Jangan</button>
           </div>
-          <div class="popup-label">ðŸ‘† Ketuk tombol biru "Izinkan" ya!</div>
+          <div class="popup-label">Ketuk tombol biru "Izinkan" ya!</div>
         </div>
       </div>
 
     </div>
 
-    <div class="instr-arrow">â¬‡ï¸</div>
-    <button class="btn-lanjut" onclick="startGame()">ðŸš€ Mulai Game!</button>
+    <div class="instr-arrow">Lanjut</div>
+    <button class="btn-lanjut" onclick="startGame()">Mulai Game!</button>
   </div>
 
   <!-- ====== GAME SCREEN ====== -->
   <div id="gameScreen">
 
     <div class="top-bar">
-      <div class="score-badge">â­ <span id="scoreVal">0</span></div>
-      <div class="timer-badge" id="timerDisplay">â± 30</div>
+      <div class="score-badge">Score <span id="scoreVal">0</span></div>
+      <div class="timer-badge" id="timerDisplay">30s</div>
     </div>
 
     <div class="target-area">
-      <div class="target-label">Mainkan not ini ðŸ‘‡</div>
-      <div class="target-note" id="targetNote">â€“</div>
+      <div class="target-label">Mainkan not ini</div>
+      <div class="target-note" id="targetNote">-</div>
     </div>
 
     <div class="note-staff-box">
@@ -692,7 +692,7 @@
 
     <div class="mic-indicator waiting" id="micIndicator">
       <div class="mic-dot"></div>
-      <span id="micLabel">Mempersiapkan mikrofonâ€¦</span>
+      <span id="micLabel">Mempersiapkan mikrofon...</span>
     </div>
 
     <div class="piano-wrap">
@@ -726,8 +726,8 @@
     </div>
 
     <div class="end-buttons" id="endButtons">
-      <button class="btn-restart" onclick="restartGame()">ðŸ” Main Lagi</button>
-      <button class="btn-finish" onclick="finishGame()">â›” Selesai</button>
+      <button class="btn-restart" onclick="restartGame()">Main Lagi</button>
+      <button class="btn-finish" onclick="finishGame()">Selesai</button>
     </div>
 
   </div><!-- end gameScreen -->
@@ -797,7 +797,7 @@ const LEVELS = {
     subtitle: "C4-G4",
     allowedNotes: ["Do", "Re", "Mi", "Fa", "Sol"],
     detectionNotes: ["Do", "Re", "Mi", "Fa", "Sol"],
-    timer: 30,
+    timer: 60,
     attemptsPerQuestion: 3
   }
 };
@@ -817,13 +817,15 @@ let gameDuration = currentLevel.timer;
 let timerInterval;
 let gameEnded   = false;
 let lastAcceptedTime = 0;
-const minInterval = 850;
+const minInterval = 650;
 let stableNote  = null;
 let stableCount = 0;
 let clueCooldownUntil = 0;
-const requiredStableFrames = 4;
-const minInputRms = 0.018;
-const clueCooldownMs = 700;
+let activeAudio = null;
+let hasTriedOpeningAudio = false;
+const requiredStableFrames = 3;
+const minInputRms = 0.01;
+const clueCooldownMs = 500;
 
 document.querySelector('.subtitle').innerText = currentLevel.title + ' - ' + currentLevel.subtitle;
 
@@ -897,12 +899,57 @@ function launchConfetti() {
 // ============================================================
 // AUDIO HELPERS
 // ============================================================
-function playAudio(url, callback = null) {
+function stopActiveAudio() {
+  if (!activeAudio) return;
+  activeAudio.pause();
+  activeAudio.currentTime = 0;
+  activeAudio = null;
+}
+
+function playAudio(url, callback = null, interrupt = true) {
   if (!url) { callback && callback(); return; }
+  if (interrupt) stopActiveAudio();
+
   const audio = new Audio(url);
-  audio.onended  = () => callback && callback();
-  audio.onerror  = () => callback && callback();
-  audio.play().catch(() => callback && callback());
+  activeAudio = audio;
+  audio.onended = () => {
+    if (activeAudio === audio) activeAudio = null;
+    callback && callback();
+  };
+  audio.onerror = () => {
+    if (activeAudio === audio) activeAudio = null;
+    callback && callback();
+  };
+  audio.play().catch(() => {
+    if (activeAudio === audio) activeAudio = null;
+    callback && callback();
+  });
+}
+
+function playUiClick() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(660, ctx.currentTime);
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.08, ctx.currentTime + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.12);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.12);
+    osc.onended = () => ctx.close();
+  } catch (e) {
+    // Ignore UI click sound failures.
+  }
+}
+
+function tryPlayOpeningAudio() {
+  if (hasTriedOpeningAudio) return;
+  hasTriedOpeningAudio = true;
+  playAudio(audioLinks.opening, null, false);
 }
 
 // ============================================================
@@ -985,7 +1032,7 @@ function updateScore() {
 
 function updateTimer() {
   const el = document.getElementById('timerDisplay');
-  el.innerText = `â± ${gameDuration}`;
+  el.innerText = `${gameDuration}s`;
   if (gameDuration <= 10) el.classList.add('urgent');
   else el.classList.remove('urgent');
 }
@@ -994,6 +1041,8 @@ function updateTimer() {
 // SCREEN NAVIGATION
 // ============================================================
 function showInstructions() {
+  playUiClick();
+  stopActiveAudio();
   document.getElementById('openingScreen').style.display     = 'none';
   document.getElementById('instructionScreen').style.display = 'flex';
 }
@@ -1024,14 +1073,14 @@ async function startGame() {
   showMsg('');
   hideNoteImage();
   clearKeyStates();
-  showTargetNote('â€“');
+  showTargetNote('-');
   setMicStatus(false);
 
   // Init audio context + mic
   try {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
     streamRef    = await navigator.mediaDevices.getUserMedia({
-      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: false }
+      audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false, channelCount: 1 }
     });
     microphone = audioContext.createMediaStreamSource(streamRef);
     analyser   = audioContext.createAnalyser();
@@ -1042,14 +1091,11 @@ async function startGame() {
     detect();
     setMicStatus(true);
   } catch(e) {
-    showMsg('âš ï¸ Izinkan mikrofon dulu ya!', '#ff4757');
+    showMsg('Izinkan mikrofon dulu ya!', '#ff4757');
     return;
   }
 
-  playAudio(audioLinks.opening, () => {
-    nextQuestion();
-    startTimer();
-  });
+  nextQuestion(true);
 }
 
 function startTimer() {
@@ -1061,12 +1107,12 @@ function startTimer() {
   }, 1000);
 }
 
-function nextQuestion() {
+function nextQuestion(startTimerAfterClue = false) {
   clearKeyStates();
   hideNoteImage();
   attempts  = 0;
   canAnswer = false;
-  showMsg('');
+  showMsg('Dengarkan dulu not soalnya', '#FFD700');
 
   const pool = currentLevel.allowedNotes;
   targetNote = pool[Math.floor(Math.random() * pool.length)];
@@ -1078,6 +1124,8 @@ function nextQuestion() {
 
   playAudio(audioLinks[targetNote], () => {
     clueCooldownUntil = Date.now() + clueCooldownMs;
+    showMsg('Sekarang mainkan not yang sama', '#ffffff');
+    if (startTimerAfterClue) startTimer();
     setTimeout(() => { canAnswer = true; }, clueCooldownMs);
   });
 }
@@ -1145,7 +1193,7 @@ function snapToNearestC4Only(freq) {
 function handleWrongPosition() {
   if (!canAnswer) return;
   canAnswer = false;
-  showMsg('ðŸ“ Mainkan area C4 â€“ E5 ya! ðŸŽ¹', '#FF9F43');
+  showMsg('Mainkan area C4 sampai G4 ya!', '#FF9F43');
   playAudio(audioLinks.posisi, () => { canAnswer = true; });
 }
 
@@ -1160,7 +1208,7 @@ function handleAnswer(note) {
     showNoteImage(note);
     score += 10;
     updateScore();
-    showMsg('ðŸŽ‰ Hebat!', '#26de81');
+    showMsg('Hebat!', '#26de81');
     launchConfetti();
     playAudio(audioLinks.benar, () => setTimeout(nextQuestion, 1200));
     return;
@@ -1170,13 +1218,13 @@ function handleAnswer(note) {
   attempts++;
 
   if (attempts === 1) {
-    showMsg('âŒ Coba lagi ya', '#ff4757');
+    showMsg('Coba lagi ya', '#ff4757');
     playAudio(audioLinks.salah1, () => { canAnswer = true; });
   } else if (attempts === currentLevel.attemptsPerQuestion - 1) {
-    showMsg('âš ï¸ Tinggal 1 kesempatan', '#FF9F43');
+    showMsg('Tinggal 1 kesempatan', '#FF9F43');
     playAudio(audioLinks.salah2, () => { canAnswer = true; });
   } else {
-    showMsg('âž¡ï¸ Kita lanjut not lain', '#48DBFB');
+    showMsg('Kita lanjut not lain', '#48DBFB');
     playAudio(audioLinks.salah3, () => setTimeout(nextQuestion, 800));
   }
 }
@@ -1191,18 +1239,18 @@ function endGame() {
   if (audioContext && audioContext.state !== 'closed') audioContext.close();
   setMicStatus(false);
 
-  showTargetNote('ðŸ');
-  showMsg(`ðŸŽ‰ Waktu habis! Score: ${score} â­`, '#FFD700');
+  showTargetNote('Selesai');
+  showMsg(`Waktu habis! Score: ${score}`, '#FFD700');
   document.getElementById('endButtons').style.display = 'flex';
-  playAudio(audioLinks.complete);
+  playAudio(score > 0 ? audioLinks.complete : audioLinks.salah3);
 }
 
-function restartGame() { startGame(); }
+function restartGame() { stopActiveAudio(); startGame(); }
 
 function finishGame() {
-  showMsg(`ðŸ‘ Score kamu: ${score} â­ Bagus sekali!`, '#FFD700');
+  showMsg(`Score kamu: ${score}. Bagus sekali!`, '#FFD700');
   document.getElementById('endButtons').style.display = 'none';
-  document.getElementById('targetNote').innerText = 'ðŸŽµ';
+  document.getElementById('targetNote').innerText = 'Musik';
   setTimeout(() => {
     document.getElementById('gameScreen').style.display        = 'none';
     document.getElementById('instructionScreen').style.display = 'none';
@@ -1236,9 +1284,11 @@ function autoCorrelate(buffer, sampleRate) {
 
   return maxpos > 0 ? sampleRate / maxpos : -1;
 }
+window.addEventListener('load', tryPlayOpeningAudio);
 </script>
 </body>
 </html>
+
 
 
 
