@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<title>Games Mana Not nya - Level 1</title>
+<title>Di mana tempatnya ? - Level 1</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -286,7 +286,7 @@
     user-select: none;
   }
 
-  /* â”€â”€ WHITE KEYS â”€â”€ */
+  /* Ã¢â€â‚¬Ã¢â€â‚¬ WHITE KEYS Ã¢â€â‚¬Ã¢â€â‚¬ */
   .white-key {
     position: relative;
     width: 44px;
@@ -346,7 +346,7 @@
     background: linear-gradient(180deg, #ffe7f7, #ffd2ef) !important;
   }
 
-  /* â”€â”€ BLACK KEYS â”€â”€ */
+  /* Ã¢â€â‚¬Ã¢â€â‚¬ BLACK KEYS Ã¢â€â‚¬Ã¢â€â‚¬ */
   .black-key {
     position: absolute;
     width: 28px;
@@ -370,7 +370,7 @@
     filter: brightness(0.85);
   }
 
-  /* Group 2: C#4, D#4, C#5, D#5 â€” fluorescent orange-yellow shadow */
+  /* Group 2: C#4, D#4, C#5, D#5 Ã¢â‚¬â€ fluorescent orange-yellow shadow */
   .black-key.grp2-1,
   .black-key.grp2-2,
   .black-key.grp2-1b,
@@ -379,7 +379,7 @@
     box-shadow: 0 6px 0 #ffcc00, 0 8px 24px rgba(255,180,0,0.7), inset 0 1px 0 rgba(255,255,255,0.12);
   }
 
-  /* Group 3: F#4, G#4, A#4 â€” fluorescent bright purple shadow */
+  /* Group 3: F#4, G#4, A#4 Ã¢â‚¬â€ fluorescent bright purple shadow */
   .black-key.grp3 {
     background: linear-gradient(180deg, #1a1a1a 0%, #111 60%, #0a0a0a 100%);
     box-shadow: 0 6px 0 #29b6f6, 0 8px 24px rgba(65, 220, 255, 0.78), inset 0 1px 0 rgba(255,255,255,0.12);
@@ -616,7 +616,7 @@
 <canvas id="confettiCanvas"></canvas>
 
 <div class="app">
-  <div class="game-title">Games Mana Not nya</div>
+  <div class="game-title">Di mana tempatnya ?</div>
   <div class="subtitle">Level 1 - C Major - middle Do</div>
 
   <!-- ====== OPENING SCREEN ====== -->
@@ -899,7 +899,7 @@ function launchConfetti() {
 }
 
 // ============================================================
-// SOUND ENGINE — Web Audio API (no external files needed)
+// SOUND ENGINE â€” Web Audio API (no external files needed)
 // ============================================================
 
 let sfxCtx = null;
@@ -958,7 +958,7 @@ function playNoise(start = 0, dur = 0.12, vol = 0.06) {
   } catch(e) {}
 }
 
-// ── UI CLICK — bright little "tink" ──────────────────────────────────────────
+// â”€â”€ UI CLICK â€” bright little "tink" â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function playUiClick() {
   playTones([
     { freq: 1200, type: 'triangle', vol: 0.12, start: 0,    dur: 0.06 },
@@ -966,7 +966,7 @@ function playUiClick() {
   ]);
 }
 
-// ── CORRECT ANSWER — happy 3-note fanfare (major arpeggio) ───────────────────
+// â”€â”€ CORRECT ANSWER â€” happy 3-note fanfare (major arpeggio) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function playSfxCorrect() {
   playTones([
     { freq: 523, type: 'triangle', vol: 0.18, start: 0,    dur: 0.12 }, // C5
@@ -978,7 +978,7 @@ function playSfxCorrect() {
   ]);
 }
 
-// ── WRONG ANSWER 1 — soft "boop" descend ─────────────────────────────────────
+// â”€â”€ WRONG ANSWER 1 â€” soft "boop" descend â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function playSfxWrong1() {
   playTones([
     { freq: 400, type: 'triangle', vol: 0.14, start: 0,    dur: 0.10, slide: 260 },
@@ -987,7 +987,7 @@ function playSfxWrong1() {
   playNoise(0, 0.08, 0.04);
 }
 
-// ── WRONG ANSWER 2 — slightly more dramatic "wah-wah" ────────────────────────
+// â”€â”€ WRONG ANSWER 2 â€” slightly more dramatic "wah-wah" â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function playSfxWrong2() {
   playTones([
     { freq: 380, type: 'square', vol: 0.08, start: 0,    dur: 0.14, slide: 220 },
@@ -996,7 +996,7 @@ function playSfxWrong2() {
   playNoise(0, 0.12, 0.05);
 }
 
-// ── WRONG ANSWER 3 / SKIP — cartoon "wahwahwah" trombone ─────────────────────
+// â”€â”€ WRONG ANSWER 3 / SKIP â€” cartoon "wahwahwah" trombone â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function playSfxWrong3() {
   playTones([
     { freq: 350, type: 'sawtooth', vol: 0.09, start: 0,    dur: 0.14, slide: 250 },
@@ -1005,7 +1005,7 @@ function playSfxWrong3() {
   ]);
 }
 
-// ── GAME START — cheerful ascending fanfare ───────────────────────────────────
+// â”€â”€ GAME START â€” cheerful ascending fanfare â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function playSfxGameStart() {
   playTones([
     { freq: 330, type: 'triangle', vol: 0.14, start: 0,    dur: 0.10 }, // E4
@@ -1020,7 +1020,7 @@ function playSfxGameStart() {
   ]);
 }
 
-// ── GAME OVER — descending "game over" jingle ─────────────────────────────────
+// â”€â”€ GAME OVER â€” descending "game over" jingle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function playSfxGameOver() {
   playTones([
     { freq: 523, type: 'triangle', vol: 0.16, start: 0,    dur: 0.18 }, // C5
@@ -1031,7 +1031,7 @@ function playSfxGameOver() {
   ]);
 }
 
-// ── COUNTDOWN TICK — clock tock sound ────────────────────────────────────────
+// â”€â”€ COUNTDOWN TICK â€” clock tock sound â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function playCountdownTick(secondsLeft) {
   if (secondsLeft > 10 || secondsLeft <= 0) return;
   const isUrgent = secondsLeft <= 5;
@@ -1049,7 +1049,7 @@ function playCountdownTick(secondsLeft) {
   }
 }
 
-// ── WRONG POSITION — soft reminder "ping" ────────────────────────────────────
+// â”€â”€ WRONG POSITION â€” soft reminder "ping" â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function playSfxPosition() {
   playTones([
     { freq: 600, type: 'sine', vol: 0.10, start: 0,    dur: 0.10 },
@@ -1058,7 +1058,7 @@ function playSfxPosition() {
   ]);
 }
 
-// ── Legacy stubs (keep playAudio for any future real audio links) ─────────────
+// â”€â”€ Legacy stubs (keep playAudio for any future real audio links) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function stopActiveAudio() {}
 
 function playAudio(url, callback = null, interrupt = true) {
@@ -1421,6 +1421,7 @@ function autoCorrelate(buffer, sampleRate) {
 </script>
 </body>
 </html>
+
 
 
 
