@@ -98,6 +98,7 @@
   }
 
   .piano-mascot {
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
     font-size: 90px;
     animation: bounce 1.2s ease-in-out infinite;
     filter: drop-shadow(0 8px 20px rgba(255,215,0,0.5));
@@ -341,8 +342,8 @@
     animation: shake 0.3s ease;
   }
   .white-key.target-highlight {
-    box-shadow: 0 0 0 3px #FFD700, 0 0 18px rgba(255,215,0,0.7), 2px 6px 10px rgba(0,0,0,0.3) !important;
-    background: linear-gradient(180deg, #fffde0, #fff9c4) !important;
+    box-shadow: 0 0 0 3px #ff6fd8, 0 0 20px rgba(255, 111, 216, 0.78), 2px 6px 10px rgba(0,0,0,0.3) !important;
+    background: linear-gradient(180deg, #ffe7f7, #ffd2ef) !important;
   }
 
   /* â”€â”€ BLACK KEYS â”€â”€ */
@@ -616,11 +617,11 @@
 
 <div class="app">
   <div class="game-title">Games Mana Not nya</div>
-  <div class="subtitle">Level 1 - C4-G4</div>
+  <div class="subtitle">Level 1 - C Major - middle Do</div>
 
   <!-- ====== OPENING SCREEN ====== -->
   <div id="openingScreen">
-    <div class="piano-mascot">Piano</div>
+    <div class="piano-mascot">&#127929;</div>
     <button class="start-btn" onclick="showInstructions()">Sudah siap main Quiz?</button>
   </div>
 
@@ -680,7 +681,7 @@
     </div>
 
     <div class="target-area">
-      <div class="target-label">Mainkan not ini</div>
+      <div class="target-label" id="targetLabel">Dengarkan not ini</div>
       <div class="target-note" id="targetNote">-</div>
     </div>
 
@@ -794,7 +795,7 @@ const LEVELS = {
   level1: {
     id: "level1",
     title: "Level 1",
-    subtitle: "C4-G4",
+    subtitle: "C Major - middle Do",
     allowedNotes: ["Do", "Re", "Mi", "Fa", "Sol"],
     detectionNotes: ["Do", "Re", "Mi", "Fa", "Sol"],
     timer: 60,
@@ -961,15 +962,22 @@ function showMsg(text, color = '#ffffff') {
   el.innerText = text;
 }
 
+function setTargetLabel(text) {
+  const el = document.getElementById('targetLabel');
+  if (!el) return;
+  el.innerText = text;
+  el.style.display = text ? 'block' : 'none';
+}
+
 function setMicStatus(listening) {
   const ind = document.getElementById('micIndicator');
   const lbl = document.getElementById('micLabel');
   if (listening) {
     ind.classList.remove('waiting');
-    lbl.innerText = 'Mendengarkan piano kamuâ€¦';
+    lbl.innerText = 'Mendengarkan piano kamu...';
   } else {
     ind.classList.add('waiting');
-    lbl.innerText = 'Mempersiapkan mikrofonâ€¦';
+    lbl.innerText = 'Mempersiapkan mikrofon...';
   }
 }
 
@@ -988,7 +996,7 @@ function hideNoteImage() {
 
 const displayLabel = {
   Do:'Do', Re:'Re', Mi:'Mi', Fa:'Fa', Sol:'Sol',
-  La:'La', Si:'Si', Do2:'Do â¬†', Re2:'Re â¬†', Mi2:'Mi â¬†'
+  La:'La', Si:'Si', Do2:'Do tinggi', Re2:'Re tinggi', Mi2:'Mi tinggi'
 };
 
 function showTargetNote(note) {
@@ -1051,6 +1059,8 @@ function showInstructions() {
 // GAME LOGIC
 // ============================================================
 async function startGame() {
+  playUiClick();
+  stopActiveAudio();
   // Switch screens
   document.getElementById('openingScreen').style.display     = 'none';
   document.getElementById('instructionScreen').style.display = 'none';
@@ -1073,6 +1083,7 @@ async function startGame() {
   showMsg('');
   hideNoteImage();
   clearKeyStates();
+  setTargetLabel('Dengarkan not ini');
   showTargetNote('-');
   setMicStatus(false);
 
@@ -1112,23 +1123,27 @@ function nextQuestion(startTimerAfterClue = false) {
   hideNoteImage();
   attempts  = 0;
   canAnswer = false;
+  setTargetLabel('Dengarkan not ini');
+  showTargetNote('?');
   showMsg('Dengarkan dulu not soalnya', '#FFD700');
 
   const pool = currentLevel.allowedNotes;
   targetNote = pool[Math.floor(Math.random() * pool.length)];
-  showTargetNote(targetNote);
-  highlightTarget(targetNote);
   stableNote = null;
   stableCount = 0;
   clueCooldownUntil = Date.now() + clueCooldownMs;
 
   playAudio(audioLinks[targetNote], () => {
     clueCooldownUntil = Date.now() + clueCooldownMs;
-    showMsg('Sekarang mainkan not yang sama', '#ffffff');
+    showTargetNote(targetNote);
+    highlightTarget(targetNote);
+    setTargetLabel('Mainkan tuts ini');
+    showMsg('Sekarang mainkan tuts nya!', '#ffffff');
     if (startTimerAfterClue) startTimer();
     setTimeout(() => { canAnswer = true; }, clueCooldownMs);
   });
 }
+
 
 function detect() {
   if (!isListening || gameEnded) return;
@@ -1193,7 +1208,7 @@ function snapToNearestC4Only(freq) {
 function handleWrongPosition() {
   if (!canAnswer) return;
   canAnswer = false;
-  showMsg('Mainkan area C4 sampai G4 ya!', '#FF9F43');
+  showMsg('Pilih tuts dari middle Do sampai Sol ya!', '#FF9F43');
   playAudio(audioLinks.posisi, () => { canAnswer = true; });
 }
 
@@ -1239,6 +1254,7 @@ function endGame() {
   if (audioContext && audioContext.state !== 'closed') audioContext.close();
   setMicStatus(false);
 
+  setTargetLabel('');
   showTargetNote('Selesai');
   showMsg(`Waktu habis! Score: ${score}`, '#FFD700');
   document.getElementById('endButtons').style.display = 'flex';
