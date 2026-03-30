@@ -1204,7 +1204,7 @@ function snapToNearestC4Only(freq) {
 function handleWrongPosition() {
   if (!canAnswer) return;
   canAnswer = false;
-  showMsg('Posisi jari di Middle DO - SOL ya!', '#FF9F43');
+  showMsg('Posisi tuts di Do tengah-Sol ya!', '#FF9F43');
   setTimeout(() => { canAnswer = true; }, 500);
 }
 
@@ -1264,7 +1264,7 @@ function finishGame() {
   const finishText = score === 0 ? 'Kamu bisa lebih baik lagi!' : `Score kamu: ${score}. Bagus sekali!`;
   showMsg(finishText, '#FFD700');
   document.getElementById('endButtons').style.display = 'none';
-  document.getElementById('targetNote').innerText = 'Musik';
+  document.getElementById('targetNote').innerHTML = '&#128077;';
   setTimeout(() => {
     document.getElementById('gameScreen').style.display        = 'none';
     document.getElementById('instructionScreen').style.display = 'none';
